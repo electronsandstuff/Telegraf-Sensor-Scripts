@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
         # Check if data is valid
         if len(s) < 9:
-            raise ValueError(f"Didn't receive enough bytes from device, requires 8, recieved {len(s)}")
+            raise ValueError(f"Didn't receive enough bytes from device, requires 9, recieved {len(s)}")
         if s[0] != 0xff or s[1] != 0x86:
             raise ValueError(f"Start of device response is incorrect, recieved {s[0]} {s[1]}")
         if ord(checksum(s[1:-1])) != s[-1]:
