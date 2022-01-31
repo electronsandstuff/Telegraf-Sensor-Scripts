@@ -14,9 +14,9 @@ if __name__ == '__main__':
 
     # Get values from bme280
     sensor_vals = {
+        'temperature': bme.get_temperature_celsius(),  # Must be called first due to quirks in the sparkfun library
         'humidity': bme.read_humidity(),
-        'pressure': bme.read_pressure(),  # NOTE: must be called after temp due to quirks in the sparkfun library
-        'temp': bme.get_temperature_celsius()
+        'pressure': bme.read_pressure(),
     }
     bme.set_mode(bme.MODE_SLEEP)  # Put the BME280 to sleep until next time
 
