@@ -37,8 +37,8 @@ if __name__ == '__main__':
     time.sleep(ccs811_sleep_time)
 
     # Read sensor values
-    ccs.read_algorithm_results()
     print(ccs.data_available())
+    ccs.read_algorithm_results()
     sensor_vals['tvoc'] = ccs.get_tvoc()
     sensor_vals['co2_ccs811'] = ccs.get_co2()
 
