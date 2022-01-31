@@ -38,6 +38,7 @@ if __name__ == '__main__':
 
     # Read sensor values
     ccs.read_algorithm_results()
+    print(ccs.data_available())
     sensor_vals['tvoc'] = ccs.get_tvoc()
     sensor_vals['co2_ccs811'] = ccs.get_co2()
 
