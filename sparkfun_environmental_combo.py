@@ -1,6 +1,6 @@
 import json
 import time
-from qwiic_bme280 import QwiicBme280
+from patched_bm280_driver import QwiicBme280
 # from qwiic_ccs811 import QwiicCcs811
 
 
