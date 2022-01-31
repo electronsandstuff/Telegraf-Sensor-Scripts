@@ -6,7 +6,7 @@ from qwiic_ccs811 import QwiicCcs811
 
 # Some constants
 bme280_sleep_time = 0.5  # How long to wait after starting BME280
-ccs811_sleep_time = 2  # How long to wait after starting CCS811
+ccs811_sleep_time = 5  # How long to wait after starting CCS811
 
 
 if __name__ == '__main__':
@@ -37,7 +37,8 @@ if __name__ == '__main__':
     time.sleep(ccs811_sleep_time)
 
     # Read sensor values
-    print(ccs.data_available())
+    if not ccs.data_available():
+        raise RuntimeError(f'Sensor data not ready, try a longer CCS811 sleep time, currently: {ccs811_sleep_time} s')
     ccs.read_algorithm_results()
     sensor_vals['tvoc'] = ccs.get_tvoc()
     sensor_vals['co2_ccs811'] = ccs.get_co2()
