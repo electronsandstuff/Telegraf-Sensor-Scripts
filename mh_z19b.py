@@ -22,7 +22,7 @@ if __name__ == '__main__':
         s = ser.read(9)
 
         # Check if data is valid
-        if len(s) < 9:
+        if len(s) < 9:  # TODO: we receive 7 bytes many times for some reason
             raise ValueError(f"Didn't receive enough bytes from device, requires 9, recieved {len(s)}")
         if s[0] != 0xff or s[1] != 0x86:
             raise ValueError(f"Start of device response is incorrect, recieved {s[0]} {s[1]}")
