@@ -40,8 +40,10 @@ if __name__ == '__main__':
     if not ccs.data_available():
         raise RuntimeError(f'Sensor data not ready, try a longer CCS811 sleep time, currently: {ccs811_sleep_time} s')
     ccs.read_algorithm_results()
+    ccs.read_ntc()
     sensor_vals['tvoc'] = ccs.get_tvoc()
     sensor_vals['eco2'] = ccs.get_co2()
+    sensor_vals['ccs811_resistance'] = ccs.get_resistance()
 
     # Dump the data to STDOUT
     print(json.dumps(sensor_vals))
